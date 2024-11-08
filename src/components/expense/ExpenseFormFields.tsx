@@ -1,5 +1,5 @@
-import React from 'react';
-import { ExpenseCategory } from '../../types/expense';
+import React, { ChangeEvent } from 'react';
+import { ExpenseCategory } from '../types/expense';
 import { FormInput } from '../ui/FormInput';
 import { FormSelect } from '../ui/FormSelect';
 import { ProjectCodeSelect } from '../ui/ProjectCodeSelect';
