@@ -1,6 +1,9 @@
 import { create } from 'zustand';
 import { AuthState, User } from '../types/user';
 
+// Define the UserRole type if not already defined
+export type UserRole = 'EMPLOYEE' | 'MANAGER' | 'ADMIN';  // adjust these values based on your actual roles
+
 interface AuthStore extends AuthState {
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;
@@ -8,7 +11,10 @@ interface AuthStore extends AuthState {
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
-  user: null,
+  user: {
+    role: 'EMPLOYEE' as UserRole,  // explicitly type as UserRole
+    // ... other properties
+  },
   isAuthenticated: false,
   isLoading: false,
 
