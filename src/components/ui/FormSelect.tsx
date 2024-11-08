@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react';
-import { SelectOption } from '../../types/expense';
+import { FormOption } from '../../types/expense';
 
 interface FormSelectProps {
   label: string;
@@ -7,7 +7,7 @@ interface FormSelectProps {
   value: string;
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
   required?: boolean;
-  options: SelectOption[];
+  options: FormOption[];
 }
 
 export const FormSelect: React.FC<FormSelectProps> = ({
