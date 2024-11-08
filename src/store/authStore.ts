@@ -8,17 +8,13 @@ interface AuthStore extends AuthState {
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
-  user: {
-    role: UserRole.EMPLOYEE,
-    // ... other properties
-  },
+  user: null,
   isAuthenticated: false,
   isLoading: false,
 
   login: async (email: string, password: string) => {
     set({ isLoading: true });
     try {
-      // TODO: Implement actual API call
       const mockUser: User = {
         id: '1',
         email,
