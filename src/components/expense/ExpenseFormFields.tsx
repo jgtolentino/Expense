@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react';
-import { ExpenseCategory } from '../types/expense';
+import { ExpenseCategory, Option } from '../../types/expense';
 import { FormInput } from '../ui/FormInput';
 import { FormSelect } from '../ui/FormSelect';
 import { ProjectCodeSelect } from '../ui/ProjectCodeSelect';
@@ -23,6 +23,11 @@ export const ExpenseFormFields: React.FC<ExpenseFormFieldsProps> = ({
   onChange,
   onProjectCodeChange
 }) => {
+  const categoryOptions: Option[] = Object.values(ExpenseCategory).map(category => ({
+    value: category,
+    label: category
+  }));
+
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -71,10 +76,7 @@ export const ExpenseFormFields: React.FC<ExpenseFormFieldsProps> = ({
           value={formData.category}
           onChange={onChange}
           required
-          options={Object.values(ExpenseCategory).map(category => ({
-            value: category,
-            label: category
-          }))}
+          options={categoryOptions}
         />
 
         <ProjectCodeSelect
