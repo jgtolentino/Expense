@@ -1,26 +1,38 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
+import { SelectOption } from '../../types/expense';
 
-interface Option {
+interface FormSelectProps {
+  label: string;
+  name: string;
   value: string;
-  label: string;
+  onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+  required?: boolean;
+  options: SelectOption[];
 }
 
-interface FormSelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'options'> {
-  label: string;
-  options: Option[];
-}
-
-export const FormSelect: React.FC<FormSelectProps> = ({ label, options, ...props }) => {
+export const FormSelect: React.FC<FormSelectProps> = ({
+  label,
+  name,
+  value,
+  onChange,
+  required = false,
+  options
+}) => {
   return (
     <div>
-      <label className="block text-sm font-medium text-gray-700">
+      <label htmlFor={name} className="block text-sm font-medium text-gray-700">
         {label}
       </label>
       <select
-        {...props}
+        id={name}
+        name={name}
+        value={value}
+        onChange={onChange}
+        required={required}
         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
       >
-        {options.map(option => (
+        <option value="">Select {label}</option>
+        {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}
           </option>
