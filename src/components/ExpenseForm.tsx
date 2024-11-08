@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { ExpenseCategory, ExpenseStatus } from '../types/expense';
 import { useExpenseStore } from '../store/expenseStore';
 import { ReceiptUploader } from './expense/ReceiptUploader';
@@ -62,6 +62,13 @@ export const ExpenseForm: React.FC = () => {
     });
   };
 
+  const handleProjectCodeChange = (value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      projectCode: value
+    }));
+  };
+
   return (
     <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl mx-auto p-6">
       <ReceiptUploader 
@@ -78,6 +85,7 @@ export const ExpenseForm: React.FC = () => {
       <ExpenseFormFields 
         formData={formData}
         onChange={handleChange}
+        onProjectCodeChange={handleProjectCodeChange}
       />
 
       <div className="flex justify-end">
