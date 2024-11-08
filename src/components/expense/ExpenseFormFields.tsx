@@ -14,8 +14,8 @@ interface ExpenseFormFieldsProps {
     description: string;
     projectCode: string;
   };
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
-  onProjectCodeChange: (code: string) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
+  onProjectCodeChange: (value: string) => void;
 }
 
 export const ExpenseFormFields: React.FC<ExpenseFormFieldsProps> = ({
